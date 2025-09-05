@@ -1,11 +1,10 @@
+# In ai-scheduling-agent/agent_graph.py
+
 from __future__ import annotations
 from typing import TypedDict, Optional, Dict, Any, List
-from datetime import datetime, timedelta
 from langgraph.graph import StateGraph, END
 from langchain_core.messages import HumanMessage, AIMessage
 
-# Agent node functions
-from agents.greeting_agent import run as greeting_node
 from agents.intake_agent import run as intake_node
 from agents.lookup_agent import run as lookup_node
 from agents.schedule_agent import run as schedule_node
@@ -13,57 +12,49 @@ from agents.confirm_agent import run as confirm_node
 from agents.reminder_agent import schedule_reminder_job
 
 class AgentState(TypedDict, total=False):
-    messages: List[Any]          # chat history
-    patient: Dict[str, Any]      # dict of patient details
+    messages: List[Any]
+    patient: Dict[str, Any]
     is_new_patient: bool
-    appointment: Dict[str, Any]  # chosen slot + doctor
-    error: Optional[str]
-    next: Optional[str]          # manual routing hint
+    appointment: Dict[str, Any]
 
 def build_graph():
     graph = StateGraph(AgentState)
-
-    # Register nodes
-    graph.add_node("greeting", greeting_node)
     graph.add_node("intake", intake_node)
     graph.add_node("lookup", lookup_node)
     graph.add_node("schedule", schedule_node)
     graph.add_node("confirm", confirm_node)
+    # Removed form distribution; flow ends at confirm
 
-    # Entry
-    graph.set_entry_point("greeting")
-
-    # Static, rule-based edges
-    graph.add_edge("greeting", "intake")
+    graph.set_entry_point("intake")
     graph.add_edge("intake", "lookup")
     graph.add_edge("lookup", "schedule")
     graph.add_edge("schedule", "confirm")
-
-    # Confirm is terminal; but it can also schedule a reminder and end
     graph.add_edge("confirm", END)
 
     return graph.compile()
 
-# Helper to run one turn inside Streamlit
-def run_turn(app, user_text: str, state: Optional[AgentState] = None):
-    if state is None:
-        state = AgentState(messages=[])
+# Helper to run one turn.
+def run_turn(app, user_text: str, state: AgentState):
+    if user_text:
+        state['messages'].append(HumanMessage(content=user_text))
 
-    # add user message
-    state['messages'] = state.get('messages', []) + [HumanMessage(content=user_text)]
+    # Keep track of existing messages
+    current_messages = len(state.get("messages", []))
+    
+    # Invoke the graph
     result_state = app.invoke(state)
 
-    # fetch the last agent message for display convenience
-    last_ai = None
-    for m in result_state.get('messages', [])[::-1]:
-        if isinstance(m, AIMessage):
-            last_ai = m
-            break
-
-    # schedule reminder if appointment is confirmed
+    # Find the newest AI message to display as the reply
+    new_messages = result_state.get('messages', [])[current_messages:]
+    last_ai_reply = ""
+    for msg in new_messages:
+        if isinstance(msg, AIMessage):
+            last_ai_reply = msg.content
+    
     appt = result_state.get('appointment')
     if appt and appt.get('status') == 'confirmed' and not appt.get('reminder_scheduled'):
-        schedule_reminder_job(appt)  # runs async via APScheduler
-        appt['reminder_scheduled'] = True
+        appt['patient'] = result_state.get('patient', {})
+        schedule_reminder_job(appt)
+        result_state['appointment']['reminder_scheduled'] = True
 
-    return result_state, (last_ai.content if last_ai else "")
+    return result_state, last_ai_reply

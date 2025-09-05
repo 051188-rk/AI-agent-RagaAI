@@ -1,53 +1,59 @@
+# In ai-scheduling-agent/agents/schedule_agent.py
+
 from datetime import datetime
-from langchain_core.messages import AIMessage
-from tools.data_io import find_available_slots, reserve_slot
+from langchain_core.messages import AIMessage, HumanMessage
+from tools.data_io import find_available_slots
+import re
 
 def run(state):
     messages = state.get("messages", [])
-    patient = state.get("patient", {})
-    # Parse the user's last message to extract doctor name and date
+    
+    if state.get("appointment", {}).get("options"):
+        return state
+
     last_user = None
     for m in reversed(messages):
-        if m.type == "human":
+        if isinstance(m, HumanMessage):
             last_user = m.content
             break
 
     if not last_user:
-        messages.append(AIMessage(content="Please provide the doctor name and desired date (YYYY-MM-DD)."))
-        state["messages"] = messages
         return state
 
-    # naive parse
-    # Expect pattern "Dr. Name on YYYY-MM-DD" or include a date string
-    import re
     date_match = re.search(r"(20\d{2}-\d{2}-\d{2})", last_user)
     date_str = date_match.group(1) if date_match else None
     doc_match = re.search(r"(Dr\.?\s+[A-Z][a-zA-Z]+\s+[A-Z][a-zA-Z]+)", last_user)
     doctor = doc_match.group(1) if doc_match else None
 
+    # CRITICAL FIX: Handle parsing failure explicitly
     if not doctor or not date_str:
-        messages.append(AIMessage(content="I couldn't parse that. Please specify like: 'Dr. Alice Wong on 2025-09-06'."))
+        # This occurs when the user is likely trying to select a time.
+        # But if we are in this agent, it means something went wrong.
+        # Instead of failing silently, we prompt the user again.
+        messages.append(AIMessage(content="I'm sorry, I couldn't understand that. Please provide the doctor and date again, like 'Dr. Alice Wong on 2025-09-15'."))
         state["messages"] = messages
         return state
 
+    is_new = state.get("is_new_patient", False)
+    duration = 60 if is_new else 30
+    
     date_obj = datetime.fromisoformat(date_str)
-    slots = find_available_slots(doctor, date_obj.date())
+    slots = find_available_slots(doctor, date_obj.date(), duration)
 
     if not slots:
-        messages.append(AIMessage(content=f"Sorry, no available slots for {doctor} on {date_str}. Try another date or doctor."))
+        messages.append(AIMessage(content=f"Sorry, no available slots for {doctor} on {date_str}. Please try another date or doctor."))
         state["messages"] = messages
         return state
 
-    # show top 3 choices
-    shown = slots[:3]
+    shown = slots[:5]
     pretty = ", ".join([s['date_slot'].strftime("%H:%M") for s in shown])
     messages.append(AIMessage(content=f"Available times for {doctor} on {date_str}: {pretty}. Which time works?"))
-    state["messages"] = messages
-
-    # Next human message should contain a time selection; try to reserve
-    # (We do the reservation in the confirm node after user selects)
+    
     state.setdefault("appointment", {})
     state["appointment"]["doctor_name"] = doctor
     state["appointment"]["date"] = date_str
+    state["appointment"]["duration_min"] = duration
     state["appointment"]["options"] = shown
+    state["messages"] = messages
+    
     return state
