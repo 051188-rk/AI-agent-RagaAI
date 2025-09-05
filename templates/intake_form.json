@@ -1,0 +1,115 @@
+{
+  "fields": [
+    {
+      "name": "first_name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "middle_initial",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "last_name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "dob",
+      "type": "date",
+      "format": "YYYY-MM-DD",
+      "required": true
+    },
+    {
+      "name": "gender",
+      "type": "enum",
+      "choices": [
+        "Male",
+        "Female",
+        "Other"
+      ],
+      "required": true
+    },
+    {
+      "name": "cell_phone",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "street",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "city",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "state",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "zip_code",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "emergency_contact",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "emergency_relation",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "emergency_phone",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "primary_insurance",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "primary_member_id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "primary_group",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "secondary_insurance",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "secondary_member_id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "secondary_group",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "chief_complaint",
+      "type": "string",
+      "required": true
+    }
+  ]
+}
