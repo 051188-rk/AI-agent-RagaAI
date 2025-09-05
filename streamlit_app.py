@@ -14,6 +14,8 @@ if "graph" not in st.session_state:
 if "state" not in st.session_state:
     st.session_state.state = {"messages": []}
 
+
+
 user_input = st.chat_input("Say hello to begin, or share your details...")
 if user_input:
     st.session_state.state, reply = run_turn(st.session_state.graph, user_input, st.session_state.state)

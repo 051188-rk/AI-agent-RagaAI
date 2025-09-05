@@ -1,51 +1,55 @@
 patient_id,first_name,middle_initial,last_name,dob,gender,cell_phone,email,street,city,state,zip_code,emergency_contact,emergency_relation,emergency_phone,primary_insurance,primary_member_id,primary_group,secondary_insurance,secondary_member_id,secondary_group
-1,Dorothy,D,Brown,2006-07-12,Female,(450) 428-3286,dorothy.brown1@example.com,1680 Madison Pl,Phoenix,AZ,87397,Jason Jones,Spouse,(295) 423-4811,United,U8386379,5557,,,
-2,John,Y,Lee,2002-08-19,Female,(548) 484-3547,john.lee2@example.com,3528 Jackson Ct,Atlanta,GA,22156,Edward Gonzalez,Sibling,(552) 818-5333,United,U7816184,6925,,,
-3,Alexander,C,Garcia,1999-04-29,Male,(991) 496-2307,alexander.garcia3@example.com,3815 Wilson Ave,Sacramento,CA,46434,Ryan Campbell,Parent,(579) 563-4432,Cigna,C1928327,7216,BlueCross,B8350305,7572
-4,Paul,C,Ramirez,1990-11-19,Other,(522) 417-9179,paul.ramirez4@example.com,6483 Johnson Blvd,Boston,MA,44718,Sarah Young,Sibling,(964) 798-8019,BlueCross,B5328710,2796,United,U6916697,9669
-5,Steven,R,Johnson,2001-01-11,Other,(317) 898-9797,steven.johnson5@example.com,4372 Jackson Ct,Miami,FL,48469,Karen Lee,Friend,(203) 939-5315,Aetna,A8148932,7126,,,
-6,Sharon,Y,Ortiz,1940-01-19,Other,(531) 700-1319,sharon.ortiz6@example.com,1833 Smith Ct,Anchorage,AK,50306,Donald Davis,Parent,(780) 280-2403,BlueCross,B1822782,5342,,,
-7,Kimberly,N,Ramirez,1988-05-19,Other,(906) 405-6107,kimberly.ramirez7@example.com,6538 Madison Ct,Virginia Beach,VA,77839,Betty Thomas,Parent,(430) 265-6539,United,U9839301,1964,Aetna,A5183473,9834
-8,Thomas,X,Kelly,1991-09-11,Female,(448) 684-7669,thomas.kelly8@example.com,3120 Maple Ave,Honolulu,HI,66498,Kimberly Diaz,Friend,(678) 946-1887,United,U0651333,9786,Cigna,C2473178,2604
-9,Michael,U,Cooper,1941-04-28,Male,(971) 442-3724,michael.cooper9@example.com,6659 Fifth Blvd,Cleveland,OH,62565,Linda Perez,Friend,(202) 599-5345,BlueCross,B4687234,4566,,,
-10,Justin,X,Cooper,1945-06-20,Other,(521) 258-1821,justin.cooper10@example.com,9572 Fifth Pl,Oakland,CA,30635,Linda Rogers,Spouse,(390) 270-2113,Aetna,A6193990,2343,BlueCross,B9854353,5351
-11,Ronald,E,Hill,1981-01-07,Female,(969) 274-1152,ronald.hill11@example.com,7509 Ninth Cir,Atlanta,GA,19602,Jonathan Ramirez,Sibling,(335) 557-2127,Aetna,A5427849,9666,BlueCross,B4124118,3546
-12,Paul,J,Cox,1958-11-23,Other,(551) 408-5325,paul.cox12@example.com,8281 Fifth Ln,Portland,OR,22097,Dorothy Diaz,Sibling,(245) 203-6464,Aetna,A4278680,2832,BlueCross,B2805982,8041
-13,Thomas,B,Flores,1972-09-17,Male,(566) 415-5088,thomas.flores13@example.com,1685 First Pl,Kansas City,MO,91351,Donna Martin,Parent,(366) 381-7755,United,U2563421,7267,,,
-14,Jacob,H,Sanchez,1981-04-18,Female,(512) 433-4652,jacob.sanchez14@example.com,388 Madison Dr,Long Beach,CA,53025,Ruth Rodriguez,Sibling,(559) 856-9346,BlueCross,B8501429,5349,Cigna,C6556981,7311
-15,Laura,G,Allen,1943-12-25,Other,(646) 201-9518,laura.allen15@example.com,8822 Madison Dr,Fresno,CA,66531,William Nelson,Sibling,(879) 327-5920,Cigna,C6564823,7888,,,
-16,Edward,V,Thompson,1995-03-22,Other,(508) 615-9977,edward.thompson16@example.com,7 Church Ln,Cleveland,OH,66346,Tyler Howard,Sibling,(676) 652-8244,Aetna,A8721489,6491,United,U4332003,8784
-17,Brandon,Y,Martinez,1980-11-09,Female,(844) 789-4185,brandon.martinez17@example.com,6292 Fifth Way,Charlotte,NC,29342,Lisa Smith,Spouse,(997) 635-4585,Aetna,A8708317,3184,,,
-18,Nancy,Q,Bailey,1993-06-02,Female,(973) 653-9270,nancy.bailey18@example.com,6992 Roosevelt Pl,Virginia Beach,VA,30861,Donna Stewart,Friend,(465) 969-5050,Cigna,C8734714,4841,Aetna,A8122362,4505
-19,William,N,Evans,1969-09-07,Other,(677) 625-2020,william.evans19@example.com,3389 Roosevelt Way,Sacramento,CA,86556,Betty Williams,Friend,(688) 206-6763,Cigna,C6688937,4595,Aetna,A0656272,9751
-20,Patricia,M,Ramos,1990-08-19,Other,(227) 285-8022,patricia.ramos20@example.com,2224 Wilson Blvd,Philadelphia,PA,16590,Carol Carter,Sibling,(416) 665-6355,Cigna,C6464170,9837,Aetna,A3100330,3496
-21,Donald,E,Stewart,2000-01-22,Male,(777) 423-8619,donald.stewart21@example.com,4199 Jackson Ct,New York,NY,89415,Kimberly Anderson,Parent,(518) 310-1420,Cigna,C9663193,2669,,,
-22,Joshua,V,Kim,1950-11-10,Other,(242) 555-9728,joshua.kim22@example.com,7019 Madison Ct,Seattle,WA,76317,Samuel Baker,Spouse,(630) 701-2729,BlueCross,B5726284,9817,,,
-23,Helen,N,Ramos,1964-01-29,Female,(451) 288-5569,helen.ramos23@example.com,7386 Park Blvd,Cleveland,OH,89997,Nancy Carter,Sibling,(229) 706-6325,Aetna,A7354549,5526,,,
-24,Eric,G,Hernandez,1961-08-26,Other,(616) 700-4937,eric.hernandez24@example.com,7801 Lincoln Blvd,Virginia Beach,VA,12260,Barbara Nguyen,Parent,(614) 908-4986,Cigna,C9578856,6419,Aetna,A4443135,2958
-25,Donna,R,White,1957-03-08,Male,(956) 695-5530,donna.white25@example.com,9660 Jackson Pl,Arlington,TX,47093,Richard Harris,Sibling,(432) 569-3939,Cigna,C0824008,5786,,,
-26,Thomas,U,Morales,1949-03-15,Male,(787) 491-8690,thomas.morales26@example.com,7844 Fourth Ct,Philadelphia,PA,16734,Steven Morris,Spouse,(266) 610-9056,United,U9022941,5066,Cigna,C9993867,8253
-27,Joshua,S,Diaz,1967-05-25,Other,(835) 261-2625,joshua.diaz27@example.com,3405 Lincoln Dr,Jacksonville,FL,96563,David Lee,Parent,(377) 765-2229,Aetna,A0679740,4792,Cigna,C7134936,2880
-28,Sharon,H,Martin,1963-10-31,Male,(273) 261-3718,sharon.martin28@example.com,5040 Ninth Cir,Columbus,OH,67560,Jessica Reyes,Sibling,(916) 612-5460,BlueCross,B7190659,5102,United,U9904902,8708
-29,Eric,U,Cruz,1964-12-14,Male,(799) 646-9056,eric.cruz29@example.com,1495 Fifth Ct,Kansas City,MO,53687,Laura Wilson,Parent,(537) 621-9117,Cigna,C6807154,6296,Aetna,A8087603,9494
-30,George,T,Murphy,1996-02-09,Female,(978) 252-4335,george.murphy30@example.com,4376 Seventh Rd,Columbus,OH,67424,Betty Morales,Spouse,(229) 845-4920,Aetna,A4808613,2858,United,U2748467,8736
-31,Donna,O,Peterson,1952-12-22,Female,(395) 813-9327,donna.peterson31@example.com,2237 Wilson Ave,Indianapolis,IN,64387,Sarah Cook,Sibling,(202) 489-5891,BlueCross,B2787558,9903,Aetna,A3396360,6213
-32,Donna,P,Carter,1974-08-21,Other,(867) 355-9115,donna.carter32@example.com,607 Cedar Pl,Wichita,KS,53515,Richard Cruz,Spouse,(738) 667-1251,Aetna,A6217459,7512,,,
-33,Kevin,V,Morgan,1974-02-03,Female,(841) 935-8994,kevin.morgan33@example.com,8865 Oak Cir,Seattle,WA,40771,Benjamin Torres,Parent,(964) 292-8110,United,U1724005,1919,Cigna,C6238692,3785
-34,Daniel,C,Ward,1974-04-27,Other,(899) 446-9153,daniel.ward34@example.com,9555 Cedar Dr,Omaha,NE,93611,Steven Collins,Sibling,(882) 209-8622,Cigna,C8217594,7951,,,
-35,Ryan,J,Sanchez,1974-07-06,Female,(309) 442-7248,ryan.sanchez35@example.com,9371 First Cir,Columbus,OH,48696,James Gomez,Sibling,(208) 779-1803,BlueCross,B4395339,5106,,,
-36,Patrick,Y,Moore,1996-05-12,Male,(842) 861-1645,patrick.moore36@example.com,5062 Franklin Blvd,Austin,TX,85965,George Taylor,Spouse,(502) 534-7807,Aetna,A3285884,3695,Cigna,C4517123,7511
-37,Aaron,R,Campbell,1948-02-07,Female,(214) 470-9791,aaron.campbell37@example.com,2025 Fourth Ct,Anaheim,CA,98125,Carol Howard,Friend,(853) 580-2775,Aetna,A7098593,2035,,,
-38,Helen,W,Hill,1998-03-31,Female,(319) 343-1742,helen.hill38@example.com,610 Church Blvd,Miami,FL,22739,Donald Morgan,Parent,(597) 664-7078,BlueCross,B9261796,5583,Aetna,A3773515,9920
-39,Samuel,L,Davis,1975-09-20,Female,(394) 325-8450,samuel.davis39@example.com,1502 Madison Dr,Tampa,FL,93819,Scott Williams,Spouse,(541) 449-3063,Aetna,A1839335,3417,,,
-40,Scott,A,Scott,1952-12-24,Male,(753) 456-3858,scott.scott40@example.com,1802 Madison St,Chicago,IL,11947,Kimberly Walker,Sibling,(216) 378-5347,United,U2681177,6931,,,
-41,Susan,O,Cook,1959-11-16,Other,(244) 944-9543,susan.cook41@example.com,4942 Fourth St,Portland,OR,72781,Lisa Diaz,Spouse,(702) 929-8267,United,U1592124,9984,,,
-42,Edward,T,Ortiz,1966-06-16,Female,(717) 819-8048,edward.ortiz42@example.com,1625 Franklin Ave,Tampa,FL,95316,Jerry Peterson,Parent,(640) 662-4743,BlueCross,B5766156,6120,,,
-43,Deborah,E,Stewart,1946-01-08,Male,(287) 295-8075,deborah.stewart43@example.com,1583 Adams Ct,Anchorage,AK,27054,Michelle Davis,Sibling,(886) 325-7730,Cigna,C6049451,9313,BlueCross,B7315851,5564
-44,Laura,H,Diaz,1990-04-29,Other,(828) 891-1430,laura.diaz44@example.com,9978 Smith Ln,Denver,CO,33647,Paul Flores,Sibling,(559) 206-3972,Aetna,A9612018,4524,Cigna,C5254599,2391
-45,Michael,E,Lee,2007-09-07,Other,(250) 890-2336,michael.lee45@example.com,4459 Fourth Way,Raleigh,NC,89570,Jeffrey Turner,Sibling,(420) 973-9394,United,U5614978,6053,Cigna,C9003432,5186
-46,Sharon,K,Thomas,1940-09-10,Female,(964) 640-3878,sharon.thomas46@example.com,2117 Second Pl,Santa Ana,CA,40161,Nicholas Bailey,Sibling,(273) 606-1693,BlueCross,B0715969,7626,,,
-47,Nancy,J,Anderson,1976-05-03,Male,(532) 375-8538,nancy.anderson47@example.com,5929 Pine Way,Atlanta,GA,41891,Karen Ramos,Friend,(736) 280-7484,Cigna,C5352181,9693,,,
-48,Ruth,L,Hall,2005-04-03,Other,(351) 441-2684,ruth.hall48@example.com,2400 Hill Dr,Philadelphia,PA,88957,Karen Martinez,Parent,(991) 843-9095,BlueCross,B9979955,3473,Aetna,A7449058,2215
-49,Michelle,O,Edwards,1943-05-17,Male,(577) 493-2257,michelle.edwards49@example.com,1480 Ninth Cir,Miami,FL,60394,Helen Howard,Spouse,(660) 785-4084,Cigna,C9782071,6626,,,
-50,David,Q,Thompson,1943-07-06,Male,(924) 648-8199,david.thompson50@example.com,8587 Sixth Cir,New York,NY,57696,Deborah Torres,Friend,(618) 993-6543,United,U5151864,5128,,,
+1,Dorothy,D,Brown,2006-07-12,Female,(450) 428-3286,dorothy.brown1@example.com,1680 Madison Pl,Phoenix,AZ,87397.0,Jason Jones,Spouse,(295) 423-4811,United,U8386379,5557.0,,,
+2,John,Y,Lee,2002-08-19,Female,(548) 484-3547,john.lee2@example.com,3528 Jackson Ct,Atlanta,GA,22156.0,Edward Gonzalez,Sibling,(552) 818-5333,United,U7816184,6925.0,,,
+3,Alexander,C,Garcia,1999-04-29,Male,(991) 496-2307,alexander.garcia3@example.com,3815 Wilson Ave,Sacramento,CA,46434.0,Ryan Campbell,Parent,(579) 563-4432,Cigna,C1928327,7216.0,BlueCross,B8350305,7572.0
+4,Paul,C,Ramirez,1990-11-19,Other,(522) 417-9179,paul.ramirez4@example.com,6483 Johnson Blvd,Boston,MA,44718.0,Sarah Young,Sibling,(964) 798-8019,BlueCross,B5328710,2796.0,United,U6916697,9669.0
+5,Steven,R,Johnson,2001-01-11,Other,(317) 898-9797,steven.johnson5@example.com,4372 Jackson Ct,Miami,FL,48469.0,Karen Lee,Friend,(203) 939-5315,Aetna,A8148932,7126.0,,,
+6,Sharon,Y,Ortiz,1940-01-19,Other,(531) 700-1319,sharon.ortiz6@example.com,1833 Smith Ct,Anchorage,AK,50306.0,Donald Davis,Parent,(780) 280-2403,BlueCross,B1822782,5342.0,,,
+7,Kimberly,N,Ramirez,1988-05-19,Other,(906) 405-6107,kimberly.ramirez7@example.com,6538 Madison Ct,Virginia Beach,VA,77839.0,Betty Thomas,Parent,(430) 265-6539,United,U9839301,1964.0,Aetna,A5183473,9834.0
+8,Thomas,X,Kelly,1991-09-11,Female,(448) 684-7669,thomas.kelly8@example.com,3120 Maple Ave,Honolulu,HI,66498.0,Kimberly Diaz,Friend,(678) 946-1887,United,U0651333,9786.0,Cigna,C2473178,2604.0
+9,Michael,U,Cooper,1941-04-28,Male,(971) 442-3724,michael.cooper9@example.com,6659 Fifth Blvd,Cleveland,OH,62565.0,Linda Perez,Friend,(202) 599-5345,BlueCross,B4687234,4566.0,,,
+10,Justin,X,Cooper,1945-06-20,Other,(521) 258-1821,justin.cooper10@example.com,9572 Fifth Pl,Oakland,CA,30635.0,Linda Rogers,Spouse,(390) 270-2113,Aetna,A6193990,2343.0,BlueCross,B9854353,5351.0
+11,Ronald,E,Hill,1981-01-07,Female,(969) 274-1152,ronald.hill11@example.com,7509 Ninth Cir,Atlanta,GA,19602.0,Jonathan Ramirez,Sibling,(335) 557-2127,Aetna,A5427849,9666.0,BlueCross,B4124118,3546.0
+12,Paul,J,Cox,1958-11-23,Other,(551) 408-5325,paul.cox12@example.com,8281 Fifth Ln,Portland,OR,22097.0,Dorothy Diaz,Sibling,(245) 203-6464,Aetna,A4278680,2832.0,BlueCross,B2805982,8041.0
+13,Thomas,B,Flores,1972-09-17,Male,(566) 415-5088,thomas.flores13@example.com,1685 First Pl,Kansas City,MO,91351.0,Donna Martin,Parent,(366) 381-7755,United,U2563421,7267.0,,,
+14,Jacob,H,Sanchez,1981-04-18,Female,(512) 433-4652,jacob.sanchez14@example.com,388 Madison Dr,Long Beach,CA,53025.0,Ruth Rodriguez,Sibling,(559) 856-9346,BlueCross,B8501429,5349.0,Cigna,C6556981,7311.0
+15,Laura,G,Allen,1943-12-25,Other,(646) 201-9518,laura.allen15@example.com,8822 Madison Dr,Fresno,CA,66531.0,William Nelson,Sibling,(879) 327-5920,Cigna,C6564823,7888.0,,,
+16,Edward,V,Thompson,1995-03-22,Other,(508) 615-9977,edward.thompson16@example.com,7 Church Ln,Cleveland,OH,66346.0,Tyler Howard,Sibling,(676) 652-8244,Aetna,A8721489,6491.0,United,U4332003,8784.0
+17,Brandon,Y,Martinez,1980-11-09,Female,(844) 789-4185,brandon.martinez17@example.com,6292 Fifth Way,Charlotte,NC,29342.0,Lisa Smith,Spouse,(997) 635-4585,Aetna,A8708317,3184.0,,,
+18,Nancy,Q,Bailey,1993-06-02,Female,(973) 653-9270,nancy.bailey18@example.com,6992 Roosevelt Pl,Virginia Beach,VA,30861.0,Donna Stewart,Friend,(465) 969-5050,Cigna,C8734714,4841.0,Aetna,A8122362,4505.0
+19,William,N,Evans,1969-09-07,Other,(677) 625-2020,william.evans19@example.com,3389 Roosevelt Way,Sacramento,CA,86556.0,Betty Williams,Friend,(688) 206-6763,Cigna,C6688937,4595.0,Aetna,A0656272,9751.0
+20,Patricia,M,Ramos,1990-08-19,Other,(227) 285-8022,patricia.ramos20@example.com,2224 Wilson Blvd,Philadelphia,PA,16590.0,Carol Carter,Sibling,(416) 665-6355,Cigna,C6464170,9837.0,Aetna,A3100330,3496.0
+21,Donald,E,Stewart,2000-01-22,Male,(777) 423-8619,donald.stewart21@example.com,4199 Jackson Ct,New York,NY,89415.0,Kimberly Anderson,Parent,(518) 310-1420,Cigna,C9663193,2669.0,,,
+22,Joshua,V,Kim,1950-11-10,Other,(242) 555-9728,joshua.kim22@example.com,7019 Madison Ct,Seattle,WA,76317.0,Samuel Baker,Spouse,(630) 701-2729,BlueCross,B5726284,9817.0,,,
+23,Helen,N,Ramos,1964-01-29,Female,(451) 288-5569,helen.ramos23@example.com,7386 Park Blvd,Cleveland,OH,89997.0,Nancy Carter,Sibling,(229) 706-6325,Aetna,A7354549,5526.0,,,
+24,Eric,G,Hernandez,1961-08-26,Other,(616) 700-4937,eric.hernandez24@example.com,7801 Lincoln Blvd,Virginia Beach,VA,12260.0,Barbara Nguyen,Parent,(614) 908-4986,Cigna,C9578856,6419.0,Aetna,A4443135,2958.0
+25,Donna,R,White,1957-03-08,Male,(956) 695-5530,donna.white25@example.com,9660 Jackson Pl,Arlington,TX,47093.0,Richard Harris,Sibling,(432) 569-3939,Cigna,C0824008,5786.0,,,
+26,Thomas,U,Morales,1949-03-15,Male,(787) 491-8690,thomas.morales26@example.com,7844 Fourth Ct,Philadelphia,PA,16734.0,Steven Morris,Spouse,(266) 610-9056,United,U9022941,5066.0,Cigna,C9993867,8253.0
+27,Joshua,S,Diaz,1967-05-25,Other,(835) 261-2625,joshua.diaz27@example.com,3405 Lincoln Dr,Jacksonville,FL,96563.0,David Lee,Parent,(377) 765-2229,Aetna,A0679740,4792.0,Cigna,C7134936,2880.0
+28,Sharon,H,Martin,1963-10-31,Male,(273) 261-3718,sharon.martin28@example.com,5040 Ninth Cir,Columbus,OH,67560.0,Jessica Reyes,Sibling,(916) 612-5460,BlueCross,B7190659,5102.0,United,U9904902,8708.0
+29,Eric,U,Cruz,1964-12-14,Male,(799) 646-9056,eric.cruz29@example.com,1495 Fifth Ct,Kansas City,MO,53687.0,Laura Wilson,Parent,(537) 621-9117,Cigna,C6807154,6296.0,Aetna,A8087603,9494.0
+30,George,T,Murphy,1996-02-09,Female,(978) 252-4335,george.murphy30@example.com,4376 Seventh Rd,Columbus,OH,67424.0,Betty Morales,Spouse,(229) 845-4920,Aetna,A4808613,2858.0,United,U2748467,8736.0
+31,Donna,O,Peterson,1952-12-22,Female,(395) 813-9327,donna.peterson31@example.com,2237 Wilson Ave,Indianapolis,IN,64387.0,Sarah Cook,Sibling,(202) 489-5891,BlueCross,B2787558,9903.0,Aetna,A3396360,6213.0
+32,Donna,P,Carter,1974-08-21,Other,(867) 355-9115,donna.carter32@example.com,607 Cedar Pl,Wichita,KS,53515.0,Richard Cruz,Spouse,(738) 667-1251,Aetna,A6217459,7512.0,,,
+33,Kevin,V,Morgan,1974-02-03,Female,(841) 935-8994,kevin.morgan33@example.com,8865 Oak Cir,Seattle,WA,40771.0,Benjamin Torres,Parent,(964) 292-8110,United,U1724005,1919.0,Cigna,C6238692,3785.0
+34,Daniel,C,Ward,1974-04-27,Other,(899) 446-9153,daniel.ward34@example.com,9555 Cedar Dr,Omaha,NE,93611.0,Steven Collins,Sibling,(882) 209-8622,Cigna,C8217594,7951.0,,,
+35,Ryan,J,Sanchez,1974-07-06,Female,(309) 442-7248,ryan.sanchez35@example.com,9371 First Cir,Columbus,OH,48696.0,James Gomez,Sibling,(208) 779-1803,BlueCross,B4395339,5106.0,,,
+36,Patrick,Y,Moore,1996-05-12,Male,(842) 861-1645,patrick.moore36@example.com,5062 Franklin Blvd,Austin,TX,85965.0,George Taylor,Spouse,(502) 534-7807,Aetna,A3285884,3695.0,Cigna,C4517123,7511.0
+37,Aaron,R,Campbell,1948-02-07,Female,(214) 470-9791,aaron.campbell37@example.com,2025 Fourth Ct,Anaheim,CA,98125.0,Carol Howard,Friend,(853) 580-2775,Aetna,A7098593,2035.0,,,
+38,Helen,W,Hill,1998-03-31,Female,(319) 343-1742,helen.hill38@example.com,610 Church Blvd,Miami,FL,22739.0,Donald Morgan,Parent,(597) 664-7078,BlueCross,B9261796,5583.0,Aetna,A3773515,9920.0
+39,Samuel,L,Davis,1975-09-20,Female,(394) 325-8450,samuel.davis39@example.com,1502 Madison Dr,Tampa,FL,93819.0,Scott Williams,Spouse,(541) 449-3063,Aetna,A1839335,3417.0,,,
+40,Scott,A,Scott,1952-12-24,Male,(753) 456-3858,scott.scott40@example.com,1802 Madison St,Chicago,IL,11947.0,Kimberly Walker,Sibling,(216) 378-5347,United,U2681177,6931.0,,,
+41,Susan,O,Cook,1959-11-16,Other,(244) 944-9543,susan.cook41@example.com,4942 Fourth St,Portland,OR,72781.0,Lisa Diaz,Spouse,(702) 929-8267,United,U1592124,9984.0,,,
+42,Edward,T,Ortiz,1966-06-16,Female,(717) 819-8048,edward.ortiz42@example.com,1625 Franklin Ave,Tampa,FL,95316.0,Jerry Peterson,Parent,(640) 662-4743,BlueCross,B5766156,6120.0,,,
+43,Deborah,E,Stewart,1946-01-08,Male,(287) 295-8075,deborah.stewart43@example.com,1583 Adams Ct,Anchorage,AK,27054.0,Michelle Davis,Sibling,(886) 325-7730,Cigna,C6049451,9313.0,BlueCross,B7315851,5564.0
+44,Laura,H,Diaz,1990-04-29,Other,(828) 891-1430,laura.diaz44@example.com,9978 Smith Ln,Denver,CO,33647.0,Paul Flores,Sibling,(559) 206-3972,Aetna,A9612018,4524.0,Cigna,C5254599,2391.0
+45,Michael,E,Lee,2007-09-07,Other,(250) 890-2336,michael.lee45@example.com,4459 Fourth Way,Raleigh,NC,89570.0,Jeffrey Turner,Sibling,(420) 973-9394,United,U5614978,6053.0,Cigna,C9003432,5186.0
+46,Sharon,K,Thomas,1940-09-10,Female,(964) 640-3878,sharon.thomas46@example.com,2117 Second Pl,Santa Ana,CA,40161.0,Nicholas Bailey,Sibling,(273) 606-1693,BlueCross,B0715969,7626.0,,,
+47,Nancy,J,Anderson,1976-05-03,Male,(532) 375-8538,nancy.anderson47@example.com,5929 Pine Way,Atlanta,GA,41891.0,Karen Ramos,Friend,(736) 280-7484,Cigna,C5352181,9693.0,,,
+48,Ruth,L,Hall,2005-04-03,Other,(351) 441-2684,ruth.hall48@example.com,2400 Hill Dr,Philadelphia,PA,88957.0,Karen Martinez,Parent,(991) 843-9095,BlueCross,B9979955,3473.0,Aetna,A7449058,2215.0
+49,Michelle,O,Edwards,1943-05-17,Male,(577) 493-2257,michelle.edwards49@example.com,1480 Ninth Cir,Miami,FL,60394.0,Helen Howard,Spouse,(660) 785-4084,Cigna,C9782071,6626.0,,,
+50,David,Q,Thompson,1943-07-06,Male,(924) 648-8199,david.thompson50@example.com,8587 Sixth Cir,New York,NY,57696.0,Deborah Torres,Friend,(618) 993-6543,United,U5151864,5128.0,,,
+51,Rakesh,,Kumar,2003-10-27,,2003-10-27,,,,,,,,,,,,,,
+52,Dr,,Alice,2025-09-06,,2025-09-06,,,,,,,,,,,,,,
+53,Alice,,Wong,2025-09-07,,2025-09-07,,,,,,,,,,,,,,
+54,Dr,,Alice,2025-09-09,,2025-09-09,,,,,,,,,,,,,,
