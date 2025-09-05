@@ -1,7 +1,7 @@
 # AI Scheduling Agent (LangGraph + LangChain + Gemini + Twilio + Streamlit)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/051188-rk/ai-scheduling-agent/main/dd.drawio.png" alt="light mode image" />
+  <img src="https://raw.githubusercontent.com/051188-rk/AI-agent-RagaAI/main/dd.drawio.png" alt="architecture diagram" />
 </p>
 
 This project is a **rule-based multi-agent** appointment scheduler for a clinic, built with **LangGraph** (orchestration), **LangChain** (tools), **Gemini** (LLM), **Twilio** (SMS), and **Streamlit** (UI).
