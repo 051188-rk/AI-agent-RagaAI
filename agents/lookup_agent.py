@@ -2,6 +2,7 @@
 
 from langchain_core.messages import AIMessage
 from tools.data_io import find_patient_by_name_dob, ensure_patient_record
+import math
 
 def run(state):
     # --- IDEMPOTENCY CHECK ---
@@ -30,8 +31,25 @@ def run(state):
         state["is_new_patient"] = False
         messages.append(AIMessage(content=f"Found your record (Patient ID: {record['patient_id']}). Welcome back!"))
 
-    # Sync the full, correct record back to the main state
-    state["patient"].update(record)
+    # Merge record into state without clobbering non-empty values with NaN/empty from CSV
+    def _is_empty(val):
+        if val is None:
+            return True
+        if isinstance(val, float):
+            try:
+                return math.isnan(val)
+            except Exception:
+                return False
+        if isinstance(val, str) and val.strip().lower() == 'nan':
+            return True
+        return False
+
+    patient_merged = state.get("patient", {}).copy()
+    for k, v in record.items():
+        # Only set from record if it is not empty (avoid overwriting with NaN/None)
+        if not _is_empty(v):
+            patient_merged[k] = v
+    state["patient"] = patient_merged
 
     messages.append(AIMessage(content="Which doctor and date would you like to schedule an appointment for? (e.g., Dr. Alice Wong on 2025-09-15)"))
     state["messages"] = messages

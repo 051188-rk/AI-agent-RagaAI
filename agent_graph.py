@@ -31,6 +31,7 @@ def build_graph():
     graph.add_edge("schedule", "confirm")
     graph.add_edge("confirm", END)
 
+    # Compile without interrupts; schedule will propose times and confirm will run on the next turn
     return graph.compile()
 
 # Helper to run one turn.

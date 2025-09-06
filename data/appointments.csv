@@ -5,3 +5,7 @@ patient_id,first_name,last_name,doctor_name,date_slot
 55,Rakesh Kumar,Barik,Dr. Alice Wong,2025-09-10 11:30:00
 55,Rakesh Kumar,Barik,Dr. Clara Smith,2025-09-10 09:30:00
 55,Rakesh Kumar,Barik,Dr. Emma Rodriguez,2025-09-10 09:30:00
+55,Rakesh Kumar,Barik,Dr. David Johnson,2025-09-10 10:30:00
+61,Namish,Sahu,Dr. Frank Chen,2025-09-10 09:00:00
+59,Sai ram,Bebarta,Dr. Clara Smith,2025-09-10 09:00:00
+61,Namish,Sahu,Dr. Clara Smith,2025-09-10 10:30:00

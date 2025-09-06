@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from langchain_core.messages import AIMessage, HumanMessage
-from tools.data_io import find_available_slots
+from tools.data_io import find_available_slots, find_next_available_slots
 import re
 
 def run(state):
@@ -41,13 +41,28 @@ def run(state):
     slots = find_available_slots(doctor, date_obj.date(), duration)
 
     if not slots:
-        messages.append(AIMessage(content=f"Sorry, no available slots for {doctor} on {date_str}. Please try another date or doctor."))
+        # Fallback: show next available options on or after requested date
+        next_slots = find_next_available_slots(doctor, date_obj.date(), duration, limit=5)
+        if not next_slots:
+            messages.append(AIMessage(content=f"Sorry, no available slots for {doctor} on {date_str} or later. Please try another date or doctor."))
+            state["messages"] = messages
+            return state
+        shown = next_slots
+        pretty_list = [f"{i+1}) {s['date_slot'].strftime('%Y-%m-%d %H:%M')}" for i, s in enumerate(shown)]
+        pretty = ", ".join(pretty_list)
+        messages.append(AIMessage(content=f"No availability on {date_str}. Next available for {doctor}: {pretty}. Reply with the time or the option number."))
+        state.setdefault("appointment", {})
+        state["appointment"]["doctor_name"] = doctor
+        state["appointment"]["date"] = date_str
+        state["appointment"]["duration_min"] = duration
+        state["appointment"]["options"] = shown
         state["messages"] = messages
         return state
 
     shown = slots[:5]
-    pretty = ", ".join([s['date_slot'].strftime("%H:%M") for s in shown])
-    messages.append(AIMessage(content=f"Available times for {doctor} on {date_str}: {pretty}. Which time works?"))
+    pretty_list = [f"{i+1}) {s['date_slot'].strftime('%H:%M')}" for i, s in enumerate(shown)]
+    pretty = ", ".join(pretty_list)
+    messages.append(AIMessage(content=f"Available times for {doctor} on {date_str}: {pretty}. Reply with the time (e.g., 09:30) or the option number (e.g., 1)."))
     
     state.setdefault("appointment", {})
     state["appointment"]["doctor_name"] = doctor

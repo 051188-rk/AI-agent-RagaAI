@@ -18,8 +18,22 @@ def _normalize_time_token(token: str):
     if not token:
         return None
     token = token.strip().lower()
-    # Handle formats like '9am' or '9:30pm'
-    m = re.match(r'^(?P<h>\d{1,2})(?::(?P<m>\d{2}))?\s*(?P<ampm>am|pm)?$', token)
+    # Handle compact forms like '1130' or '930pm'
+    m = re.match(r'^(?P<h>\d{1,2})(?P<m>\d{2})\s*(?P<ampm>am|pm)?$', token)
+    if m:
+        h = int(m.group('h'))
+        minute = int(m.group('m'))
+        ampm = m.group('ampm')
+        if ampm:
+            if ampm == 'pm' and h != 12:
+                h += 12
+            if ampm == 'am' and h == 12:
+                h = 0
+        if 0 <= h <= 23 and 0 <= minute <= 59:
+            return f"{h:02d}:{minute:02d}"
+
+    # Handle separators ':' or '.' like '11.30' or '9:30pm' and bare hour like '9am'
+    m = re.match(r'^(?P<h>\d{1,2})(?::|\.)?(?P<m>\d{2})?\s*(?P<ampm>am|pm)?$', token)
     if not m:
         return None
     h = int(m.group('h'))
@@ -45,7 +59,9 @@ def _extract_time_from_text(text: str):
     # capture tokens such as 09:30, 9:30am, 9am, 9
     patterns = [
         r'(\d{1,2}:\d{2}\s*(?:am|pm)?)',
+        r'(\d{3,4}\s*(?:am|pm)?)',
         r'(\d{1,2}\s*(?:am|pm))',
+        r'(\d{1,2}[\.:]\d{2}\s*(?:am|pm)?)',
         r'(\d{1,2}:\d{2})',
         r'\b(\d{1,2})\b'
     ]
@@ -53,6 +69,34 @@ def _extract_time_from_text(text: str):
         m = re.search(p, text, flags=re.IGNORECASE)
         if m:
             return m.group(1)
+    return None
+
+def _extract_option_index(text: str, max_len: int):
+    """
+    Try to extract an option index from the user's message.
+    Accepts formats like '1', '2', 'option 3', 'choose 1', etc.
+    Returns zero-based index or None if not found/invalid.
+    """
+    if not text:
+        return None
+    # Look for a standalone small integer 1..max_len
+    m = re.search(r"\b(\d{1,2})\b", text)
+    if m:
+        try:
+            idx = int(m.group(1))
+            if 1 <= idx <= max_len:
+                return idx - 1
+        except Exception:
+            pass
+    # Look for 'option X' pattern
+    m = re.search(r"option\s*(\d{1,2})", text, flags=re.IGNORECASE)
+    if m:
+        try:
+            idx = int(m.group(1))
+            if 1 <= idx <= max_len:
+                return idx - 1
+        except Exception:
+            pass
     return None
 
 def run(state):
@@ -82,18 +126,28 @@ def run(state):
     if not last_user:
         return state
 
-    # Extract and normalize time token from the user's reply
-    raw_time_token = _extract_time_from_text(last_user)
-    normalized_time = _normalize_time_token(raw_time_token) if raw_time_token else None
-
-    if not normalized_time:
-        messages.append(AIMessage(content="Please reply with one of the available times (examples: '09:30', '9:30am', or '9')."))
-        state["messages"] = messages
-        return state
+    # Try option index selection first
+    idx = _extract_option_index(last_user, len(appt["options"]))
+    normalized_time = None
+    if idx is None:
+        # Extract and normalize time token from the user's reply
+        raw_time_token = _extract_time_from_text(last_user)
+        normalized_time = _normalize_time_token(raw_time_token) if raw_time_token else None
+        if not normalized_time:
+            messages.append(AIMessage(content="Please reply with one of the available times (examples: '09:30', '9:30am', or '9') or the option number (e.g., '1')."))
+            state["messages"] = messages
+            return state
 
     # Match normalized_time to one of the proposed options
     chosen = None
-    for s in appt["options"]:
+    if idx is not None:
+        # Select by numeric option
+        try:
+            chosen = appt["options"][idx]
+        except Exception:
+            chosen = None
+    
+    for s in appt["options"] if chosen is None else []:
         slot_dt = s.get("date_slot")
         try:
             # slot_dt might be a pandas.Timestamp or datetime
@@ -111,8 +165,38 @@ def run(state):
             chosen = s
             break
 
+    # If no exact match and user provided only hour (e.g., '11:00' derived from '11'),
+    # try to pick a slot within the same hour (prefer :00 then :30)
+    if chosen is None and normalized_time and normalized_time.endswith(":00"):
+        target_hour = normalized_time.split(":")[0]
+        same_hour = []
+        for s in appt["options"]:
+            slot_dt = s.get("date_slot")
+            try:
+                hh = slot_dt.strftime("%H")
+                mm = slot_dt.strftime("%M")
+            except Exception:
+                try:
+                    import pandas as pd
+                    slot_dt = pd.to_datetime(slot_dt).to_pydatetime()
+                    hh = slot_dt.strftime("%H")
+                    mm = slot_dt.strftime("%M")
+                except Exception:
+                    continue
+            if hh == target_hour:
+                same_hour.append((mm, s))
+        if same_hour:
+            # Prefer :00 over :30, else the earliest minute
+            same_hour.sort()
+            for mm, s in same_hour:
+                if mm in ("00", "30"):
+                    chosen = s
+                    break
+            if not chosen:
+                chosen = same_hour[0][1]
+
     if not chosen:
-        messages.append(AIMessage(content="That time wasn't one of the proposed options. Please choose a time exactly from the list (e.g., '09:30')."))
+        messages.append(AIMessage(content="That selection wasn't one of the proposed options. Please reply with a listed time (e.g., '09:30') or the option number (e.g., '1')."))
         state["messages"] = messages
         return state
 
